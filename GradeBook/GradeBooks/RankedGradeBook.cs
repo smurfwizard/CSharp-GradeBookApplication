@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace GradeBook.GradeBooks
@@ -37,6 +38,32 @@ namespace GradeBook.GradeBooks
             else
             {
                 return 'F';
+            }
+        }
+    
+        public override CalculateStatistics()
+        {
+             if (Students.Count < 5)
+            {
+                Console.WriteLine("You must have at least 5 students to do ranked grading.");
+                return;
+            }
+            else
+            {
+                base.CalculateStatistics();
+            }
+        }
+    
+        public override void CalculateStudentStatistics()
+        {
+             if (Students.Count < 5)
+            {
+                Console.WriteLine("You must have at least 5 students to do ranked grading.");
+                return;
+            }
+            else
+            {
+                base.CalculateStudentStatistics();
             }
         }
     }
