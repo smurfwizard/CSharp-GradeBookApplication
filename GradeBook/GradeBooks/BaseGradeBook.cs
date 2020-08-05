@@ -14,10 +14,13 @@ namespace GradeBook.GradeBooks
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         public GradeBookType Type{get;set;}
-        public BaseGradeBook(string name)
+
+        public bool IsWeighted { get; set; }
+        public BaseGradeBook(string name, bool isWeighted)
         {
             Name = name;
             Students = new List<Student>();
+            IsWeighted = isWeighted;
         }
 
         public void AddStudent(Student student)
@@ -50,7 +53,17 @@ namespace GradeBook.GradeBooks
                 Console.WriteLine("Student {0} was not found, try again.", name);
                 return;
             }
-            student.AddGrade(score);
+            if (student.Type == StudentType.Honors || student.Type == StudentType.DualEnrolled )
+            {
+                if(IsWeighted)
+                {
+                    student.AddGrade(score+1);
+                }
+            }
+            else
+            {
+                student.AddGrade(score);
+            }
         }
 
         public void RemoveGrade(string name, double score)
