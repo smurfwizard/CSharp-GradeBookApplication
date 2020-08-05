@@ -43,6 +43,7 @@ namespace GradeBook.UserInterfaces
             var name = parts[1];
             var type = parts[2].ToLower();
             var weighted = bool.Parse(parts[3]);
+
             if(type == "standard")
             {
                 gradeBook  = new StandardGradeBook(name,weighted);
@@ -59,7 +60,6 @@ namespace GradeBook.UserInterfaces
             }
                 Console.WriteLine("Created gradebook {0}.", name);
                 GradeBookUserInterface.CommandLoop(gradeBook);
-            //BaseGradeBook gradeBook = new BaseGradeBook(name);
 
         }
 
